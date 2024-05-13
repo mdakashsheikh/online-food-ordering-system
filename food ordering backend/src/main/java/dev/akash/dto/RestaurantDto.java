@@ -1,6 +1,7 @@
 package dev.akash.dto;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embeddable;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class RestaurantDto {
     private String title;
 
     @Column(length = 1000)
+    @ElementCollection
     private List<String> image;
 
     private String description;;

@@ -7,36 +7,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "orders")
-public class Order {
+public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    private User customer;
-
     @JsonIgnore
     @ManyToOne
-    private Restaurant restaurant;
-
-    private Long totalAmount;
-    private Date createdAt;
+    private Cart cart;
 
     @ManyToOne
-    private Address deliveryAddress;
+    private Food food;
 
-    @OneToMany
-    private List<Orderitem> items;
+    private int quantity;
+    private Long totalPrice;
 
-    private int totalItem;
-    private int totalPrice;
+    @ElementCollection
+    private List<String> ingredients;
 }
